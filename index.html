@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>绘制文本</title>
+    <style>
+        body{
+            margin:0px;
+            padding:0px;
+        }
+        #mycanvas{
+            border: 1px solid #9c9898;
+            background-color: #77ffcc;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var canvas=document.getElementById("mycanvas");
+            var context=canvas.getContext("2d");
+            var x=canvas.width/3;
+            var y=canvas.height/4;
+            //全充满字体
+            context.font="italic 40px Arial";
+            context.fillStyle="#ff0000";
+            context.fillText("hell world!",x,y);
+            //透明字体
+            context.moveTo(canvas.width/2,0);
+            context.lineTo(canvas.width/2,canvas.height);
+            context.linewidth=5;
+            context.strokeStyle="#ff00ff";
+            context.stroke();
+            context.strokeStyle="#0000ff";
+            context.lineWidth=2;//设置描边的宽度
+            context.textAlign="end";
+            context.strokeText("hello world!",canvas.width/2,canvas.height/2);
+            var mear=context.measureText("i love you!");
+            var width=mear.width;
+            context.font="30px Arial";
+            context.textAlign="center";
+            context.fillstyle="#ff00ff";
+            context.fillText("("+width+"px wide)",x,y+40);
+        }
+    </script>
+</head>
+<body>
+ <canvas id="mycanvas" width="600" height="200"></canvas>
+</body>
+</html>
